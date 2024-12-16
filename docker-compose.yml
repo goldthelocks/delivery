@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "4566:4566" # localstack
+      - "8000:8000" # ddb
+    environment:
+      - SERVICES=dynamodb
+      - AWS_DEFAULT_REGION=ap-southeast-2
+      - DEBUG=1
+    volumes:
+      - ./bin/init-localstack.sh:/docker-entrypoint-initaws.d/init-localstack.sh
