@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @RestControllerAdvice
-public class ApiExceptionHandler {
+public class ResourceExceptionHandler {
 
     @ExceptionHandler(ParcelRejectedException.class)
     public ResponseEntity<ErrorResponse> handleParcelRejectedException() {

@@ -1,6 +1,7 @@
 package com.eraine.delivery.client;
 
 import com.eraine.delivery.config.VoucherApiConfig;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
@@ -11,7 +12,6 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
-import java.net.URI;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,13 +22,13 @@ public class VoucherClient {
     private final VoucherApiConfig restConfig;
 
     public BigDecimal getDiscount(String voucherCode) {
-        URI uri = UriComponentsBuilder
+        var uri = UriComponentsBuilder
                 .fromUriString(restConfig.getBaseUrl())
                 .path("/voucher/{voucherCode}")
                 .queryParam("key", restConfig.getApiKey())
                 .build(voucherCode);
 
-        VoucherResponse voucherResponse = restClient.get()
+        var voucherResponse = restClient.get()
                 .uri(uri)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -41,6 +41,7 @@ public class VoucherClient {
         return voucherResponse == null ? BigDecimal.ZERO : voucherResponse.discount();
     }
 
+    @Builder
     record VoucherResponse(
             String code,
             BigDecimal discount,

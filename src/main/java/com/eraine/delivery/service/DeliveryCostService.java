@@ -46,9 +46,9 @@ public class DeliveryCostService {
 
     private BigDecimal applyDiscount(BigDecimal calculatedCost, String voucherCode) {
         try {
-            // assuming this is percentage
+            // assuming this is percentage (e.g. 10 for 10%)
             var discount = voucherRestClient.getDiscount(voucherCode);
-            log.info("Applying discount {} from voucher to calculatedCost {}", discount, calculatedCost);
+            log.info("Applying {}% discount from voucher to calculatedCost {}", discount, calculatedCost);
             var discountAmount = calculatedCost.multiply(discount).divide(HUNDRED_PERCENT, RoundingMode.HALF_UP);
             return calculatedCost.subtract(discountAmount);
         } catch (RestClientException ex) {
