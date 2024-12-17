@@ -40,7 +40,7 @@ public class DeliveryCostService {
 
         return new DeliveryCostResponse(
                 evaluationResult.classification(),
-                DEFAULT_CURRENCY,
+                DEFAULT_CURRENCY.getCurrencyCode(),
                 costWithDiscount);
     }
 

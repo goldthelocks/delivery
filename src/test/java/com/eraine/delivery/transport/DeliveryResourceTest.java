@@ -46,7 +46,7 @@ class DeliveryResourceTest {
     void whenCalculateCost_thenShouldReturn200Response() throws Exception {
         var response = DeliveryCostResponse.builder()
                 .classification("Small Parcel")
-                .currency(Currency.getInstance("PHP"))
+                .currency(Currency.getInstance("PHP").getCurrencyCode())
                 .cost(new BigDecimal("30.00"))
                 .build();
 

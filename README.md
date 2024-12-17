@@ -1,5 +1,7 @@
 # Delivery API
 
+This is a simple Spring Boot App for an API that calculates the cost of delivery based on the parcel's weight and volume. The API also supports applying discount codes.
+
 # Requirements
 - Java 21
 - Docker
@@ -32,6 +34,24 @@ docker-compose up -d
 cd how-much
 ./mvnw spring-boot:run
 ```
+
+## Test the API
+
+```
+curl --location 'http://localhost:8080/delivery/cost' \
+--header 'Content-Type: application/json' \
+--data '{
+    "weight": "10",
+    "height": "10",
+    "width": "10",
+    "length": "10",
+    "voucher_code": "MYNT"
+}'
+```
+
+# API documentation
+
+API documentation is available at `http://localhost:8080/swagger-ui.html`.
 
 # Nice to have
 - API authentication (OAuth, JWT, Basic Auth)

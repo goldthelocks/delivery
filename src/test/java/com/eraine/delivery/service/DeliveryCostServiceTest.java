@@ -50,7 +50,7 @@ class DeliveryCostServiceTest {
         var deliveryCostResponse = deliveryCostService.calculateCost(deliveryCostRequest);
 
         assertEquals("Small Parcel", deliveryCostResponse.classification());
-        assertEquals("PHP", deliveryCostResponse.currency().getCurrencyCode());
+        assertEquals("PHP", deliveryCostResponse.currency());
         assertEquals(new BigDecimal("30.00"), deliveryCostResponse.cost());
     }
 
@@ -78,7 +78,7 @@ class DeliveryCostServiceTest {
         var deliveryCostResponse = deliveryCostService.calculateCost(deliveryCostRequest);
 
         assertEquals("Small Parcel", deliveryCostResponse.classification());
-        assertEquals("PHP", deliveryCostResponse.currency().getCurrencyCode());
+        assertEquals("PHP", deliveryCostResponse.currency());
         assertEquals(new BigDecimal("27.00"), deliveryCostResponse.cost());
     }
 
@@ -106,7 +106,7 @@ class DeliveryCostServiceTest {
         var deliveryCostResponse = deliveryCostService.calculateCost(deliveryCostRequest);
 
         assertEquals("Small Parcel", deliveryCostResponse.classification());
-        assertEquals("PHP", deliveryCostResponse.currency().getCurrencyCode());
+        assertEquals("PHP", deliveryCostResponse.currency());
         assertEquals(new BigDecimal("30.00"), deliveryCostResponse.cost());
     }
 }
